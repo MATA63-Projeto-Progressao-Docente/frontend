@@ -1,7 +1,6 @@
 import Image from 'next/image'
+import LoginPage from './login/page'
 
 export default function Home() {
-  return (
-    <p>oi</p>
-  )
+  return <LoginPage />;
 }
