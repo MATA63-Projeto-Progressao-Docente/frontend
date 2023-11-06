@@ -8,7 +8,7 @@ import { storeAuthToken } from "@/api/auth";
 export default function LoginPage() {
   const [data, setData] = useState({email: '', password: ''});
   const [isValidEmail, setIsValidEmail] = useState(true);
-	const router = useRouter();
+  const router = useRouter();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -22,19 +22,19 @@ export default function LoginPage() {
     setData({ ...data, [name]: value });
   };
 
-	function login(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-		api.post('/login', data)
-			.then((res) => {
-				const { token } = res.data;
-				storeAuthToken(token);
-				router.push('/init');
-			})
-			.catch((err) => {
-				console.error('Erro durante a requisição de login:', err);
-				alert('Credenciais estão incorretas.');
-			})
-	}
+  function login(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    api.post('/login', data)
+      .then((res) => {
+        const { token } = res.data;
+        storeAuthToken(token);
+        router.push('/init');
+      })
+      .catch((err) => {
+        console.error('Erro durante a requisição de login:', err);
+        alert('Credenciais estão incorretas.');
+      })
+  }
 
   return (
 		<div className="w-full h-screen items-center bg-secondary flex">

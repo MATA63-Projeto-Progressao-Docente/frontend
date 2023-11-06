@@ -27,12 +27,12 @@ const requerimentoStyle: React.CSSProperties = {
 };
 
 export default function InitPage() {
-	const router = useRouter();
-	const token = getAuthToken();
-	if (!token) {
-		router.push('/login');
-		return null;
-	}
+  const router = useRouter();
+  const token = getAuthToken();
+  if (!token) {
+    router.push('/login');
+    return null;
+  }
 
 	// Simule uma lista de requerimentos (substitua por seus dados reais)
 	const requerimentos: Requerimento[] = [
