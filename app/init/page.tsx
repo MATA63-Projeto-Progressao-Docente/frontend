@@ -1,5 +1,9 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { getAuthToken } from '@/api/auth';
+import { useRouter } from 'next/navigation';
 
 interface Requerimento {
 	id: number;
@@ -23,6 +27,13 @@ const requerimentoStyle: React.CSSProperties = {
 };
 
 export default function InitPage() {
+	const router = useRouter();
+	const token = getAuthToken();
+	if (!token) {
+		router.push('/login');
+		return null;
+	}
+
 	// Simule uma lista de requerimentos (substitua por seus dados reais)
 	const requerimentos: Requerimento[] = [
 		{
