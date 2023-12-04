@@ -2,11 +2,13 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from 'next/navigation';
+import api from "@/api/axios";
+import { storeAuthToken } from "@/api/auth";
 
 export default function LoginPage() {
   const [data, setData] = useState({email: '', password: ''});
   const [isValidEmail, setIsValidEmail] = useState(true);
-   const router = useRouter();
+  const router = useRouter();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -20,15 +22,18 @@ export default function LoginPage() {
     setData({ ...data, [name]: value });
   };
 
-  function login(event: FormEvent<HTMLFormElement>): void {
-    // @to-do: remove this after back-end connection is done.
-    event.preventDefault()
-    if (!isValidEmail) {
-      alert('Por favor insira um email válido.');
-      return;
-    }
-    alert('Seu email: ' + data.email + '\n' + 'Sua senha: ' + data.password);
-    router.push('/init');
+  function login(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    api.post('/login', data)
+      .then((res) => {
+        const { token } = res.data;
+        storeAuthToken(token);
+        router.push('/init');
+      })
+      .catch((err) => {
+        console.error('Erro durante a requisição de login:', err);
+        alert('Credenciais estão incorretas.');
+      })
   }
 
   return (
