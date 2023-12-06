@@ -22,63 +22,109 @@ export default function ActivitiesPage() {
       name: "Lorem ipsum",
       number: 1,
       points: 20,
-      fieldId: 1,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 2,
       points: 20,
-      fieldId: 2,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 3,
       points: 20,
-      fieldId: 3,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 4,
       points: 20,
-      fieldId: 4,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 5,
       points: 20,
-      fieldId: 5,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 6,
       points: 20,
-      fieldId: 6,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 7,
       points: 20,
-      fieldId: 7,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 8,
       points: 20,
-      fieldId: 8,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 9,
       points: 20,
-      fieldId: 9,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
     {
       name: "Lorem ipsum",
       number: 10,
       points: 20,
-      fieldId: 10,
+      field: {
+        id: 1,
+        name: 'Campo'
+      },
+      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
     },
   ]);
+
+  const fields: any = {
+    1: 'Campo',
+    2: 'Campo2',
+    3: 'Campo3'
+  };
 
   const handleFileChange = (event: any) => {
     const newFile = event.target.files[0];
@@ -87,13 +133,18 @@ export default function ActivitiesPage() {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    const fieldId = parseInt(field, 10);
     setActivities((prevActivities) => [
       ...prevActivities,
       {
         name: title,
         number: 777,
         points: 20,
-        fieldId: 777,
+        field: {
+          id: fieldId,
+          name: fields[fieldId]
+        },
+        description: description
       },
     ]);
     console.log(activities);
@@ -143,7 +194,9 @@ export default function ActivitiesPage() {
               <h2 className="overflow-hidden text-ellipsis w-full whitespace-nowrap">
                 {activity.name}
               </h2>
-              <p>{activity.fieldId}</p>
+              <p>{activity.field.name}</p>
+              <p><b>Descrição</b></p>
+              <p>{activity.description}</p>
               <p className="self-end">{activity.points} pontos</p>
             </div>
           ))}
@@ -183,9 +236,9 @@ export default function ActivitiesPage() {
                     <option value="" disabled hidden>
                       Selecione um campo
                     </option>
-                    <option value="1">Opção 1</option>
-                    <option value="2">Opção 2</option>
-                    <option value="3">Opção 3</option>
+                    <option value="1">Campo</option>
+                    <option value="2">Campo2</option>
+                    <option value="3">Campo3</option>
                   </select>
                 </label>
                 <label className="w-6/12">
