@@ -138,7 +138,7 @@ export default function ActivitiesPage() {
 					{
 						activities.map((activity, index) => (
 							<div key={index} className='flex flex-col border-2 rounded border-secondary px-6 py-3 w-2/12'>
-								<h2>{activity.name}</h2>
+								<h2 className='overflow-hidden text-ellipsis w-full whitespace-nowrap'>{activity.name}</h2>
 								<p>{activity.fieldId}</p>
 								<p className='self-end'>{activity.points} pontos</p>
 							</div>
