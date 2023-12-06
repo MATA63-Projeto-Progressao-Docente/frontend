@@ -79,7 +79,7 @@ export default function InitPage() {
 			<h1>Meus Requerimentos</h1>
 			<div style={gridStyle}>
 				{requerimentos.map((requerimento) => (
-					<div key={requerimento.id} style={requerimentoStyle}>
+					<div key={requerimento.id} style={requerimentoStyle} data-requerimento>
 						{/* Exiba os detalhes do requerimento */}
 						<h2>{requerimento.titulo}</h2>
 						<p>Campo: {requerimento.campo}</p>
