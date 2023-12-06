@@ -24,7 +24,7 @@ export default function LoginPage() {
 
   function login(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    api.post('/login', data)
+    api.post('/login', data, { withCredentials: true })
       .then((res) => {
         const { token } = res.data;
         storeAuthToken(token);
