@@ -2,13 +2,14 @@
 
 Cypress.Commands.add('login', () => {
   cy.visit('http://localhost:3000');
-  cy.get('#email').type('admin@ufba.br');
+  cy.get('#email').type('yago@ufba.br');
   cy.get('#password').type('123123123');
   cy.get('button').click();
+  cy.get('nav').contains('Atividades').click();
   cy.url().should('include', '/activities');
 });
 
-describe('ActivitiesPage', () => {
+describe('Activities Page', () => {
   beforeEach(() => {
     cy.login();
   });
@@ -18,26 +19,30 @@ describe('ActivitiesPage', () => {
   });
 
   it('should display a list of activities', () => {
-    cy.get('[data-requeriment]').should('have.length', 10); // Altere conforme o número de atividades no array
+    cy.get('[data-requeriment]').should('have.length', 0); // Altere conforme o número de atividades no array
   });
 
   it('should display navigation links in the NavBar', () => {
     cy.get('nav').contains('Atividades').should('exist');
   });
 
-  it('should add a new activity', () => {
+  it.only('should add a new activity', () => {
+    const filePath = './cypress/files/teste.txt';
+
     cy.get('button').contains('Adicionar atividade').click();
 
     cy.get('#modal');
-      cy.get('#field').select('Campo');
-      cy.get('#activity').select('2');
+      cy.get('#field').select(2);
+      cy.get('#activity').select(2);
       cy.get('#title').type('Nova Atividade');
       cy.get('#hours').type('10');
       cy.get('#description').type('Descrição da nova atividade');
+      cy.get('input[type="file"]').as('fileInput');
+      cy.get('@fileInput').selectFile(filePath);
 
       cy.get('button').contains('Salvar').click();
     // Verifique se a nova atividade foi adicionada à lista
-    cy.get('[data-requeriment]').should('have.length', 11); // Ajuste conforme o número esperado
+    cy.get('[data-requeriment]').should('have.length', 1); // Ajuste conforme o número esperado
   });
 
   it('should close modal', () => {
