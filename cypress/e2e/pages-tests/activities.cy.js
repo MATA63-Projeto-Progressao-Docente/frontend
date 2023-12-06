@@ -26,7 +26,7 @@ describe('Activities Page', () => {
     cy.get('nav').contains('Atividades').should('exist');
   });
 
-  it.only('should add a new activity', () => {
+  it('should add a new activity', () => {
     const filePath = './cypress/files/teste.txt';
 
     cy.get('button').contains('Adicionar atividade').click();
