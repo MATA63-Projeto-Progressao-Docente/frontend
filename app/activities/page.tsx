@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Modal from "react-modal";
+import { activitiesSample } from "./sample";
 
 export default function ActivitiesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,108 +13,7 @@ export default function ActivitiesPage() {
   const [hours, setHours] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
-  const [activities, setActivities] = useState([
-    {
-      name: "Lorem ipsum",
-      number: 1,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 2,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 3,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 4,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 5,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 6,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 7,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 8,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 9,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-    {
-      name: "Lorem ipsum",
-      number: 10,
-      points: 20,
-      field: {
-        id: 1,
-        name: 'Campo'
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur. Auctor elementum nunc pharetra fames erat. Id ornare duis arcu at. Elit consectetur vivamus id arcu faucibus vitae leo magna.'
-    },
-  ]);
+  const [activities, setActivities] = useState(activitiesSample);
 
   const fields: any = {
     1: 'Campo',
@@ -172,6 +72,9 @@ export default function ActivitiesPage() {
       <nav>
         <ul className="flex justify-end bg-secondary text-white items-center">
           <li className="nav-item px-5">
+            <Link href="/home">Início</Link>
+          </li>
+          <li className="nav-item px-5">
             <Link href="/activities">Atividades</Link>
           </li>
         </ul>
@@ -202,7 +105,7 @@ export default function ActivitiesPage() {
         </div>
         <button
           type="button"
-          className="self-end mr-72 bg-highlight py-2 px-12 rounded"
+          className="self-end mr-72 bg-highlight py-2 px-12 rounded mb-20"
         >
           <h2
             className="text-white uppercase"
