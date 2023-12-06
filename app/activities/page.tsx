@@ -2,12 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { getAuthToken } from "@/api/auth";
-import { useRouter } from "next/navigation";
-import api from "@/api/axios";
 import Modal from "react-modal";
-
-Modal.setAppElement("#modal");
 
 export default function ActivitiesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -151,6 +146,10 @@ export default function ActivitiesPage() {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    Modal.setAppElement("#modal");
+  }, []);
+
   // const router = useRouter();
   // const token = localStorage.getItem('authToken');
   // let isAuthenticated = false;
@@ -189,7 +188,7 @@ export default function ActivitiesPage() {
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="flex flex-col border-2 rounded border-secondary px-6 py-3 w-2/12"
+              className="flex flex-col border-2 rounded border-secondary px-6 py-3 w-2/12" data-requeriment
             >
               <h2 className="overflow-hidden text-ellipsis w-full whitespace-nowrap">
                 {activity.name}
@@ -216,11 +215,13 @@ export default function ActivitiesPage() {
           <Modal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
-            contentLabel="Nova atividade"
+            contentLabel="Nova atividade" 
+						id="modal"
           >
             <p
               className="absolute right-0 mr-5 text-primary text-2xl cursor-pointer"
               onClick={() => setIsModalOpen(false)}
+              id="btn-close"
             >
               X
             </p>
@@ -231,7 +232,7 @@ export default function ActivitiesPage() {
                   <select
                     value={field}
                     onChange={(event) => setField(event.target.value)}
-                    className="border-2 rounded border-secondary w-full"
+                    className="border-2 rounded border-secondary w-full" id="field"
                   >
                     <option value="" disabled hidden>
                       Selecione um campo
@@ -246,6 +247,7 @@ export default function ActivitiesPage() {
                     value={activity}
                     onChange={(event) => setActivity(event.target.value)}
                     className="border-2 rounded border-secondary w-full"
+                    id="activity"
                   >
                     <option value="" disabled hidden>
                       Selecione uma atividade
@@ -265,7 +267,7 @@ export default function ActivitiesPage() {
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
                     placeholder="Digite o título"
-                    className="border-2 rounded border-secondary w-full pl-2"
+                    className="border-2 rounded border-secondary w-full pl-2" id="title"
                   />
                 </label>
                 <label className="w-6/12">
@@ -277,7 +279,7 @@ export default function ActivitiesPage() {
                     placeholder="Digite as horas"
                     step="1"
                     pattern="\d*"
-                    className="border-2 rounded border-secondary w-full pl-2"
+                    className="border-2 rounded border-secondary w-full pl-2" id="hours"
                   />
                 </label>
               </div>
@@ -290,6 +292,7 @@ export default function ActivitiesPage() {
                   placeholder="Digite o conteúdo"
                   rows={4}
                   className="border-2 rounded border-secondary p-2"
+                  id="description"
                 />
               </label>
 
