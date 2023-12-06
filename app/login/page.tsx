@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import api from "@/api/axios";
 
@@ -26,7 +26,7 @@ export default function LoginPage() {
 		api
 			.post("/login", data)
 			.then((res) => {
-				router.push("/activities");
+				router.push("/home");
 			})
 			.catch((err) => {
 				console.error("Erro durante a requisição de login:", err);

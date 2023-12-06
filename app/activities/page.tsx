@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import api from "@/api/axios";
 import Modal from "react-modal";
+import { activitiesSample } from "./sample";
 
 export default function ActivitiesPage() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
